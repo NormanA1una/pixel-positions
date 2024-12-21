@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-black text-white font-hanken-grotesk">
+<body class="bg-black text-white font-hanken-grotesk pb-20">
     <div class="px-10">
         <nav class="flex justify-between items-center py-4 border-b border-white/10">
             {{-- Logo --}}
@@ -30,9 +30,25 @@
             </div>
 
             {{-- Post a job --}}
-            <div>
-                <a href="#">Post a job</a>
-            </div>
+            @auth
+                <div class="flex items-center space-x-4">
+                    <a href="/jobs/create">Post a job</a>
+
+                    <form id="logout-form" action="/logout" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            @endauth
+
+            {{-- Login --}}
+            @guest
+                <div class="flex items-center space-x-4">
+                    <a href="/register">Sign up </a>
+                    <a href="/login">Login</a>
+                </div>
+            @endguest
         </nav>
 
         <main class="mt-10 max-w-[986px] mx-auto">

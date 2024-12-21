@@ -2,7 +2,7 @@
 
 <x-panel class="flex gap-x-6">
     <div>
-        <x-employer-logo />
+        <x-employer-logo :employer="$job->employer" />
     </div>
 
     <div class="flex-1 flex flex-col">
@@ -11,7 +11,9 @@
         </a>
 
         <h3 class="text-xl font-bold mt-3 group-hover:text-blue-800 transition-colors duration-300">
-            {{ $job->title }}
+            <a href="/jobs/{{ $job->url }}" target="_blank">
+                {{ $job->title }}
+            </a>
         </h3>
 
         <p class="text-sm text-[#C2C2C2] mt-auto">

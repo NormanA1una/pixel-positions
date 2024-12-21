@@ -7,7 +7,9 @@
 
     <div class="p-8">
         <h3 class="group-hover:text-blue-800 transition-colors duration-300 text-xl font-bold">
-            {{ $job->title }}
+            <a href="/jobs/{{ $job->url }}" target="_blank">
+                {{ $job->title }}
+            </a>
         </h3>
 
         <p class="text-sm text-[#C2C2C2] mt-4">
@@ -22,6 +24,6 @@
             @endforeach
         </div>
 
-        <x-employer-logo width="42" />
+        <x-employer-logo :employer="$job->employer" width="42" />
     </div>
 </x-panel>
